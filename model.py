@@ -5,7 +5,7 @@ cuda = True if torch.cuda.is_available() else False
 
 N_FFT = 512
 N_CHANNELS = round(1 + N_FFT/2)
-OUT_CHANNELS = 64
+OUT_CHANNELS = 32
 
 
 class RandomCNN(nn.Module):
