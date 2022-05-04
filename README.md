@@ -25,8 +25,6 @@ Some of other projects with audio results are as below.
 To sum up, our results is far better than the original `random CNN` results, which use the same dataset (only two audio) as we did. For those pre-trained deep neural network based on huge dataset, our results is comparable, and can be traind in 5 minutes, without using any outer dataset.(**But still, all these conclusion are based on human taste.**)
 
 ## Results
-**You can listen to my current result  now !** It's on soundcloud, [link1](https://soundcloud.com/mazzzystar/sets/stairway2nightcall), [link2](https://soundcloud.com/mazzzystar/sets/speech-conversion-sample).
-
 The generated spectrogram compared with `content` and `style`.
 ![](picture/gen.png)
 
@@ -39,18 +37,4 @@ Compare the spectrogram of `gen` with `content` and `style`(X axis represents `T
 pip install -r requirements.txt 
 # remove `CUDA_VISIBLE_DEVICES` when use CPU, though it will be slow. 
 CUDA_VISIBLE_DEVICES=0 python train.py -content input/boy18.wav -style input/girl52.wav
-```
-Tips: change `3x1` CONV to `3x3` CONV can get smoother generated spectrogram.
-
-### But..does the `gram` of random CNN output really works ?
-Below is my experiments result of using `texture gram`  after 1-layer RandomCNN  to capture speaker identity by putting them as **the only feature** in a simple nearest neighbor speaker identification system. The table shows the result of speaker identification accuracy of this system over the first 15 utterances of 30 first speakers of the VCTK dataset, along with 100 utterances of 4 first speakers.
-
-| Speakers        | Train/Test           | Accuracy  |
-| ------------- |:-------------:| -----:|
-| 30     | 270/180 | 45.6%|
-| 4      | 240/160      |   92.5% |
-
-It seems `texture gram along time-axis` really captured something, you can check it by:
-```
-python vctk_identify
 ```
